@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teams</title>
+</head>
+<body>
+<ul>
+    {% for team in teams %}
+    <li>{{team.name}}  <img alt="logo" style="max-width: 50px" src="/static{{ team.logo }}"></li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
+{% endblock content %}

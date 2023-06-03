@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} Wyszukiwarka {% endblock %}
+{% block content %}
+
+  <h1>Wyszukiwarka meczy</h1>
+  <form method="GET">
+    <input type="text" name="q" placeholder="Enter team name" value="{{ request.GET.q }}">
+    <button type="submit">Wyszukaj</button>
+  </form>
+
+  <div class="matches">
+    {% for match in object_list %}
+      <div class="match">
+        <h3> <img style="max-width: 25px;" src="/static{{ match.home_team.logo  }}">{{ match.home_team.name }} vs  {{ match.away_team.name }} <img style="max-width: 25px" src="/static{{ match.away_team.logo  }}"></h3>
+
+        <p>Data: {{ match.date|date:"d M Y" }}</p>
+        <p>Wynik: {{ match.home_team_score }} - {{ match.away_team_score }}</p>
+        <p>Stadion: {{ match.venue }}</p>
+        <p>Widzowie: {{ match.spectators }}</p>
+      </div>
+    {% empty %}
+      <p>No matches found.</p>
+    {% endfor %}
+  </div>
+{% endblock content %}

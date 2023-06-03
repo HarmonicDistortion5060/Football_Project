@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<html>
+<head>
+    <title>Gole {{ player.first_name }} {{ player.last_name }}</title>
+</head>
+<body>
+    <h1>Gole {{ player.first_name }} {{ player.last_name }}</h1>
+    <p>Zespół: {{ player.team.name }} </p>
+    <h2>Gole:</h2>
+    <ul>
+    {% for goal in goals %}
+        <li>Mecz: {{ goal.match.home_team.name }} vs {{ goal.match.away_team.name }} - Minuta: {{ goal.minute }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock content %}
